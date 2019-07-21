@@ -20,6 +20,7 @@ def written_process(dict, file_type):
     file_type.write('\n')
     #One space key pressed means one data set
     if keyboard.is_pressed(' '):
+        print('Event ending')
         #Formatter
         file_type.write('-----------------------------------------------\n\n')
             
