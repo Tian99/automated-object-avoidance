@@ -8,17 +8,17 @@ import argparse
 import cv2
 import imutils
 import time
+import collection
 
-def collision_analysis(dX,dY,X,Y,moving_time):
-    print("gonna implement later")
     
-def ball_tracking(current_x=0,current_y=0):
+def ball_tracking(choice,current_x=0,current_y=0):
     # construct the argument parse and parse the arguments
     ap = argparse.ArgumentParser()
     ap.add_argument("-v", "--video",
         help="path to the (optional) video file")
     ap.add_argument("-b", "--buffer", type=int, default=64,
         help="max buffer size")
+    ap.add_argument("--collect", action='store_true', help="Collect all the position data")
     args = vars(ap.parse_args())
     # define the lower and upper boundaries of the "green"
     # ball in the HSV color space, then initialize the
@@ -98,12 +98,15 @@ def ball_tracking(current_x=0,current_y=0):
                 #Not sure about the unit!!!!
                 dX = int(x) - current_x
                 dY = int(y) - current_y
-                #Print the displacement
-                print("dX = {0}, dY = {1}".format(dX,dY))
-                #Print the location for tracking and time
-                print ("X = {0}, Y = {1}, time = {0}".format(int(x), int(y), moving_time))
-                #Collision analysis
-                collision_analysis(dX,dY,x,y,moving_time)
+                
+                if choice !='collect':
+                    #Print the displacement
+                    print("dX = {0}, dY = {1}".format(dX,dY))
+                    #Print the location for tracking and time
+                    print ("X = {0}, Y = {1}, time = {0}".format(int(x), int(y), moving_time))
+                else:
+                    #Collision analysis
+                    collection.collection(dX,dY,x,y,moving_time)
                 #Get the current location to get the displacement
                 current_x = x
                 current_y = y

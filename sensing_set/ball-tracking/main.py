@@ -1,22 +1,21 @@
 import argparse
+import sys
 import ball_tracking
-import collection
 #Define two global variables
 current_x = 0
 current_y = 0
 # USAGE
-# python ball_tracking.py
-import ball_tracking
-
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument('-c', '--collect', type=int, metavar='', help='Type in 1 to collect all the data from video')
+ap.add_argument("--collect", action='store_true', help="Collect all the position data")
 args = ap.parse_args()
 
-ball_tracking.ball_tracking(current_x,current_y)
+#Run the same scipt but data collection
+if args.collect:
+    ball_tracking.ball_tracking('collect', current_x,current_y)
+else:
+    ball_tracking.ball_tracking('normal', current_x,current_y)
 
-if args.collect is 'c':
-    print('yesssssssssssssssss')
 
 
 
