@@ -14,9 +14,9 @@ file_one = open(address_one,"w+")
 file_two = open(address_two,"w+")
 file_three = open(address_three,"w+")
 
-def written_process(dict, file_type):
+def written_process(data, file_type):
     #Write the data to the file
-    file_type.write(json.dumps(dict))
+    file_type.write(json.dumps(data))
     file_type.write('\n')
     #One space key pressed means one data set
     if keyboard.is_pressed(' '):
@@ -28,16 +28,16 @@ def written_process(dict, file_type):
 file_choice = None
 def collection(dX,dY,x,y,moving_time):
     global file_choice
-    dict = {}
+    data = {}
     #Construct a library
-    dict['dX']=dX
-    dict['dY']=dY
-    dict['x']=x
-    dict['y']=y
-    dict['moving_time']=moving_time
+    data['dX']=dX
+    data['dY']=dY
+    data['x']=x
+    data['y']=y
+    data['moving_time']=moving_time
     
     #Convert the dictionary to string
-    dict={'dict':dict}
+    #data={'data':data}
     #Key input to decide which file it's gonna written to
     if keyboard.is_pressed(2):
         print('written to file 1')
@@ -50,4 +50,4 @@ def collection(dX,dY,x,y,moving_time):
         file_choice = file_three
     #Written specific data to specific files
     if file_choice is not None:
-        written_process(dict, file_choice)
+        written_process(data, file_choice)

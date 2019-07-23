@@ -11,7 +11,7 @@ import time
 import collection
 
     
-def ball_tracking(choice,current_x=0,current_y=0):
+def tracking(choice,current_x=0,current_y=0):
     # construct the argument parse and parse the arguments
     ap = argparse.ArgumentParser()
     ap.add_argument("-v", "--video",
