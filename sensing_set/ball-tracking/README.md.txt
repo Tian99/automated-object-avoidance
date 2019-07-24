@@ -1,4 +1,6 @@
 data collection mode:sudo python main.py --collect
+data plot mode(executes after plot) python main.py --plot
+
 enter 1,2,or 3 during the process to choose which file to written to
 press space to complete a complete movement. 
 

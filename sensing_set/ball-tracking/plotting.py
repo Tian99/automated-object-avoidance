@@ -8,7 +8,13 @@ def data_loading(address):
     file = open(address)
     #Write to a dictionary
     for line in file.readlines():
+        print(line)
         #Append each dictionary to a list
+        if '------' in line:
+            #Jump to the next line
+            data_total.append('break')
+            continue
+            print(line)
         data_total.append(json.loads(line))
         
             
@@ -19,9 +25,16 @@ def plot_action(data_number):
     y_number = []
     if data_number is not None:
         for i in data_number:
+            if i is 'break':
+                plt.plot(x_number,y_number)
+                #Erase the list
+                x_number = []
+                y_number = []
+                #Print multiple graphs
+                continue
+            
             x_number.append(i['x'])
             y_number.append(i['y'])
-        plt.plot(x_number,y_number)
         plt.show()
 
 def plot():

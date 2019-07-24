@@ -22,7 +22,7 @@ def written_process(data, file_type):
     if keyboard.is_pressed(' '):
         print('Event ending')
         #Formatter
-        file_type.write('-----------------------------------------------\n\n')
+        file_type.write('-----------------------------------------------\n')
             
     #file_one.close()
 file_choice = None
