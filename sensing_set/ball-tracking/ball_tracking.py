@@ -10,6 +10,23 @@ import imutils
 import time
 import collection
 
+
+
+def pop_amount(amount):
+        for x in range(amount):
+                distance.pop()
+#First analysis the rough depth, later a more precise one
+def depth_analysis(distance):
+    #See if it exists a decreasing sequence
+    distance.append(distance)
+    #Manage the queue
+    if len(distance)>= 60:
+        pop_amount(50)
+    #pop the first ones to ensure precision
+    print(distance[0])
+    if int(distance) > int(distance[0]):
+        print('closing!!!!')
+        exit()
     
 def tracking(choice,current_x=0,current_y=0):
     # construct the argument parse and parse the arguments
@@ -73,6 +90,8 @@ def tracking(choice,current_x=0,current_y=0):
             cv2.CHAIN_APPROX_SIMPLE)
         cnts = imutils.grab_contours(cnts)
         center = None
+        
+        #depth_analysis(len(cnts))
 
         # only proceed if at least one contour was found
         if len(cnts) > 0:
